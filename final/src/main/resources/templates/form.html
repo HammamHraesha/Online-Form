@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+    <meta charset = "UTF-8">
+     <title>Job Application Form</title>
+    <link rel = "stylesheet" href = "/css/styling.css">
+    </head>
+    
+    <body>
+		<div class = "container">
+			<div class = "title"><h1>JOB APPLICATION FORM</h1></div>
+                <form action="/send-form-data" method ="post" th:object="${formData}">
+                    <br>
+					<div class = "user-details">
+
+                            <label><b>First Name</b></label>
+						    <input type="text" th:field="*{firstName}" name="firstName" placeholder="Enter your first name" required>
+						    <label>th:errors="*{firstName}" class="error"</label>
+
+                            <label><b>Last Name</b></label>
+						    <input type="text" th:field="*{lastName}" name="lastName" placeholder="Enter your last name" required>
+  							 <label>th:errors="*{lastName}" class="error"</label>
+  							 
+                            <label><b>Email</b></label>
+						    <input type="email" th:field="*{email}" name="email" placeholder="Enter your email" required>
+						    <label>th:errors="*{email}" class="error"</label>
+  
+						    <label><b>Phone Number</b></label>
+						    <input type="text" th:field="*{phoneNumber}" name="phoneNumber" placeholder="Enter your phone number" required>
+						    <label>th:errors="*{phoneNumber}" class="error"</label>
+ 
+						    <label><b>Date of Birth</b></label>
+						    <input type="text" th:field="*{dateOfBirth}" name="dateOfBirth" reuqired>
+						   	<label>th:errors="*{dateOfBirth}" class="error"</label>
+
+
+                            <br>
+                          
+                            <label><b>Gender</b></label>
+                            <br>
+                            <br>
+                            <input type = "radio" th:field="*{gender}" name = "gender"> Male
+			                <input type = "radio" th:field="*{gender}" name = "gender"> Female
+ 							<label>th:errors="*{gender}" class="error"</label>
+                            <br>
+                            <br>
+
+                            <label><b>Completed Levels of Education</b></label>
+                            <br>
+                            <br>
+                                    <input type="checkbox" th:field="*{completedLevelsOfEducation}" value="highSchool">High School<br>
+									<input type="checkbox" th:field="*{completedLevelsOfEducation}" value="undergraduate">Undergraduate<br>
+									<input type="checkbox" th:field="*{completedLevelsOfEducation}" value="masters">Masters<br>
+ 									<input type="checkbox" th:field="*{completedLevelsOfEducation}" value="phd">PhD<br>
+ 									<label>th:errors="*{completedLevelsOfEducation}" class="error"</label>
+
+							<label><b>Years of Experience</b></label>
+						    <input type="text" th:field="*{yearsOfExperience}" name="yearsOfExperience" placeholder="Enter your years of experience" required>
+							<label>th:errors="*{yearsOfExperience}" class="error"</label>
+							
+	                        <label class="file" style="background-color:rgb(255, 255, 255);">
+	                        <input type="file" th:field="*{cv}" name="cv">
+	                         <b>Click to upload CV</b>
+	                        </label>
+	                        <label>th:errors="*{cv}" class="error"</label>
+	                        <br>
+	
+	                        <br>
+	
+	                        <div class="button">
+	                        <a href = "result.html">
+			             	<input type = "submit" "value = "Save" style="background-color: #04AA6D;">
+	                        </a>
+	                        
+	                        <a href = "form.html">
+			             	<input type = "submit" value = "Cancel" style="background-color: red;">
+	                        </a>
+	                        </div>
+    	        	</div>
+                </form>
+        </div>
+    </body>
+</html>

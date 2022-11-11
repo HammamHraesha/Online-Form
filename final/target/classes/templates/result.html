@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+    <meta charset = "UTF-8">
+     <title>Job Application Result</title>
+    <link rel = "stylesheet" href = "/css/result-styling.css">
+    </head>
+    
+    <body>
+		<div class = "container"  th:object="${formData}">
+			<div class = "title"><h1>JOB APPLICATION FORM</h1></div>
+                
+                    <br>
+					<div class = "user-details">
+
+                            <label><b>First Name</b></label>
+                            <div class = "result">
+						    <label th:text="*{firstName}"></label>
+                            </div>
+
+                            <label><b>Last Name</b></label>
+                            <div class = "result">
+							<label th:text="*{lastName}"></label>  
+                            </div>
+							 
+                            <label><b>Email</b></label>
+                            <div class = "result">
+							<label th:text="*{email}"></label>
+                            </div>
+                              
+						    <label><b>Phone Number</b></label>
+						    <div class = "result">
+							<label th:text="*{phoneNumber}"></label> 
+						    </div>
+						    
+						    <label><b>Date of Birth</b></label>
+						    <div class = "result">
+							<label th:text="*{#temporals.format(dateOfBirth, 'dd-MM-yyyy')}"></label>
+						    </div>
+						    
+                            <br>
+                          
+                            <label><b>Gender</b></label>
+							<div class = "result">
+							<label th:text="*{gender}"></label>
+							</div>
+							
+                            <br>
+                            <br>
+
+							<label><b>Completed Levels of Education</b></label>
+							<div class = "result">
+							<label th:each="item, status : *{completedLevelsOfEducation}"></label>
+							<label th:if="${status.last}" th:text="${item} + '.'"></label>
+							<label th:unless="${status.last}" th:text="${item} + ', '"></label>
+							</div>
+						
+							<label><b>Years of Experience</b></label>
+	                        <div class = "result">
+						 	<label th:text="*{yearsOfExperience}"></label>
+	                        </div>
+						
+ 						<label>Attached CV</label>
+ 						<br>
+ 						<div class = "result">
+ 						<label th:text="*{cv}" th:href="*{cv}"></label>
+ 						</div>
+ 						
+    	        	</div>
+                </form>
+        </div>
+    </body>
+</html>
